@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>임마누엘 가정교회 선교 바자회</title>
+    <meta name="description" content="QR 전용 안내 페이지 (메뉴 / Zelle 송금 방법)" />
+    <meta name="format-detection" content="telephone=no" />
+    <style>
+      :root {
+        --bg-duration: 7000ms; /* 각 이미지 노출 시간 */
+        --fade-duration: 1200ms; /* 페이드 시간 */
+        --max-width: 960px;
+      }
+      html, body { height: 100%; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0; font-family: -apple-system, system-ui, Segoe UI, Roboto, Noto Sans KR, Arial, Apple SD Gothic Neo, sans-serif;
+        color: #111; line-height: 1.5; background: #000; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+      }
+      /* 슬라이드 배경 레이어 2장으로 교차 페이드 */
+      .bg-layer {
+        position: fixed; inset: 0; background-size: cover; background-position: center center; background-repeat: no-repeat;
+        transition: opacity var(--fade-duration) ease-in-out, filter var(--fade-duration) ease-in-out; opacity: 0; filter: brightness(0.9);
+      }
+      .bg-layer.show { opacity: 1; }
+      .overlay { position: fixed; inset: 0; background: rgba(0,0,0,.35); }
+
+      /* 콘텐츠 카드 */
+      .shell { position: relative; min-height: 100%; display: grid; place-items: center; padding: 24px; }
+      .card {
+        width: min(100%, var(--max-width));
+        color: #fff; text-align: center; padding: 32px 20px; border-radius: 20px;
+        background: rgba(0,0,0,.28); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);
+        box-shadow: 0 10px 30px rgba(0,0,0,.25);
+      }
+      h1 { font-size: clamp(28px, 5vw, 56px); margin: 8px 0 6px; font-weight: 800; letter-spacing: -0.02em; }
+      .subtitle { font-size: clamp(14px, 2.3vw, 18px); opacity: .9; }
+      .year { font-size: clamp(12px, 2vw, 16px); opacity: .8; }
+
+      .actions { display: grid; gap: 12px; grid-template-columns: 1fr; max-width: 520px; margin: 18px auto 0; }
+      @media (min-width: 560px) { .actions { grid-template-columns: 1fr 1fr; } }
+
+      .btn { display: inline-block; text-decoration: none; padding: 14px 18px; border-radius: 14px; font-weight: 700; font-size: 16px;
+             border: 1px solid rgba(255,255,255,.5); color: #111; background: #fff; text-align: center; cursor: pointer; }
+      .btn.alt { background: rgba(255,255,255,.08); color: #fff; border-color: rgba(255,255,255,.35); }
+      .btn:active { transform: translateY(1px); }
+
+      .footer { color: rgba(255,255,255,.85); font-size: 12px; margin-top: 14px; }
+
+      /* 이미지 모달 스타일 */
+      .image-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+      }
+      
+      .image-modal.show {
+        display: flex;
+        opacity: 1;
+      }
+      
+      .modal-content {
+        position: relative;
+        max-width: 90%;
+        max-height: 90%;
+        text-align: center;
+      }
+      
+      .modal-image {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        border-radius: 8px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      }
+      
+      .close-btn {
+        position: absolute;
+        top: -40px;
+        right: 0;
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        color: white;
+        font-size: 24px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.3s ease;
+      }
+      
+      .close-btn:hover {
+        background: rgba(255, 255, 255, 0.3);
+      }
+
+      /* 접근성: 모션 감소 선호 시 페이드만 유지하고 자동 전환 간격 늘림 */
+      @media (prefers-reduced-motion: reduce) {
+        :root { --bg-duration: 16000ms; --fade-duration: 300ms; }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 배경 이미지 두 레이어 (교차 페이드) -->
+    <div id="bgA" class="bg-layer"></div>
+    <div id="bgB" class="bg-layer"></div>
+    <div class="overlay" aria-hidden="true"></div>
+
+    <main class="shell">
+      <section class="card" role="main" aria-label="메인 안내">
+        <div class="year">2025년 표어</div>
+        <h1>성경대로 행하며 칭찬 받는<br/>임마누엘 가정교회</h1>
+        <h2> 이스라엘 아무개 선교사님을 위한 선교 바자회</h2>
+        <p class="subtitle">QR 전용 간단 안내 페이지</p>
+
+        <nav class="actions" aria-label="빠른 링크">
+          <button class="btn" onclick="showImage('Menu.JPG')">메뉴</button>
+          <button class="btn alt" onclick="showImage('How_to_do.PNG')">Zelle로 결제하는 방법</button>
+        </nav>
+        <div class="footer">모든 최신 브라우저/스마트폰 지원 · 데이터 사용량 최소화</div>
+      </section>
+    </main>
+
+    <!-- 이미지 모달 -->
+    <div id="imageModal" class="image-modal" onclick="closeModal()">
+      <div class="modal-content" onclick="event.stopPropagation()">
+        <button class="close-btn" onclick="closeModal()">&times;</button>
+        <img id="modalImage" class="modal-image" src="" alt="이미지">
+      </div>
+    </div>
+
+    <script>
+      // 이미지 모달 관련 함수들
+      function showImage(imageSrc) {
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        
+        modalImage.src = imageSrc;
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden'; // 스크롤 방지
+      }
+      
+      function closeModal() {
+        const modal = document.getElementById('imageModal');
+        modal.classList.remove('show');
+        document.body.style.overflow = ''; // 스크롤 복원
+      }
+      
+      // ESC 키로 모달 닫기
+      document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+          closeModal();
+        }
+      });
+
+      // ======== 간단한, 의존성 없는 배경 슬라이드쇼 ========
+      // 아래 배열을 배경 이미지 경로로 교체하세요. (절대/상대 URL 모두 가능)
+      // 예: 같은 폴더에 bg1.jpg, bg2.jpg, bg3.jpg가 있다면 ['bg1.jpg','bg2.jpg','bg3.jpg']
+      const BG_IMAGES = [
+        'Background.png'
+      ];
+
+      // 이미지가 1장뿐이어도 오류 없이 동작하도록 방어
+      const imgs = BG_IMAGES.length > 0 ? BG_IMAGES : [
+        'https://images.unsplash.com/photo-1511690656952-34342bb7c2f2?q=80&w=1600&auto=format&fit=crop'
+      ];
+
+      // 프리로드
+      const preloaded = new Set();
+      function preload(src) { if (preloaded.has(src)) return; const i = new Image(); i.src = src; preloaded.add(src); }
+
+      const a = document.getElementById('bgA');
+      const b = document.getElementById('bgB');
+      const FADE_MS = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--fade-duration')) || 1200;
+      const SHOW_MS = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--bg-duration')) || 7000;
+      let idx = 0, showingA = true;
+
+      function setBg(el, src, visible) {
+        el.style.backgroundImage = `url('${src}')`;
+        // 짧은 지연 후 opacity 전환 (사파리 글리치 방지)
+        requestAnimationFrame(() => {
+          if (visible) el.classList.add('show'); else el.classList.remove('show');
+        });
+      }
+
+      function next() {
+        const nextIdx = (idx + 1) % imgs.length;
+        const current = showingA ? a : b;
+        const nextEl  = showingA ? b : a;
+        const nextSrc = imgs[nextIdx];
+        preload(nextSrc);
+        setBg(nextEl, nextSrc, false);
+        // 다음 프레임에 보이도록 전환
+        setTimeout(() => {
+          setBg(nextEl, nextSrc, true);
+          current.classList.remove('show');
+          showingA = !showingA;
+          idx = nextIdx;
+        }, 30);
+      }
+
+      // 초기 세팅
+      setBg(a, imgs[0], true);
+      preload(imgs[1] || imgs[0]);
+
+      // 이미지가 2장 이상일 때만 순환
+      if (imgs.length > 1) {
+        setInterval(next, SHOW_MS);
+      }
+
+      // iOS PWA/탭 재개 시 배경 멈춤 방지
+      document.addEventListener('visibilitychange', () => {
+        if (!document.hidden && imgs.length > 1) {
+          // 즉시 다음 이미지로 한 번 넘겨 자연스러운 느낌 유지
+          next();
+        }
+      });
+    </script>
+  </body>
+</html>
