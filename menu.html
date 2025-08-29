@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>메뉴 - 임마누엘 가정교회 선교 바자회</title>
+    <meta name="description" content="바자회 메뉴 및 밀키트 안내" />
+    <meta name="format-detection" content="telephone=no" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        font-family: -apple-system, system-ui, Segoe UI, Roboto, Noto Sans KR, Arial, Apple SD Gothic Neo, sans-serif;
+        background: #f5f5f5;
+        color: #333;
+        line-height: 1.6;
+      }
+      
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      
+      .header {
+        text-align: center;
+        margin-bottom: 30px;
+        padding: 20px;
+        background: #fff;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      }
+      
+      .back-btn {
+        display: inline-block;
+        padding: 12px 24px;
+        background: #007bff;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        font-weight: 600;
+        transition: background 0.3s ease;
+      }
+      
+      .back-btn:hover {
+        background: #0056b3;
+      }
+      
+      h1 {
+        font-size: 2.5rem;
+        color: #2c3e50;
+        margin-bottom: 10px;
+      }
+      
+      .menu-section {
+        margin-bottom: 40px;
+        background: #fff;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      }
+      
+      .menu-image {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      
+      .section-title {
+        background: #2c3e50;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        font-size: 1.8rem;
+        font-weight: 600;
+      }
+      
+      .meal-section {
+        margin-bottom: 40px;
+        background: #fff;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      }
+      
+      .meal-title {
+        background: #e74c3c;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 700;
+      }
+      
+      .meal-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        padding: 20px;
+      }
+      
+      .meal-item {
+        text-align: center;
+      }
+      
+      .meal-item img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+      }
+      
+      .meal-item img:hover {
+        transform: scale(1.02);
+      }
+      
+      .meal-label {
+        margin-top: 15px;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #2c3e50;
+      }
+      
+      @media (max-width: 768px) {
+        .container {
+          padding: 15px;
+        }
+        
+        h1 {
+          font-size: 2rem;
+        }
+        
+        .section-title, .meal-title {
+          font-size: 1.5rem;
+          padding: 15px;
+        }
+        
+        .meal-grid {
+          grid-template-columns: 1fr;
+          gap: 15px;
+          padding: 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <a href="index.html" class="back-btn">← 메인으로 돌아가기</a>
+        <h1>바자회 메뉴</h1>
+        <p>임마누엘 가정교회 선교 바자회</p>
+      </div>
+      
+      <!-- 메뉴 섹션 -->
+      <div class="menu-section">
+        <div class="section-title">메뉴</div>
+        <img src="Menu.JPG" alt="바자회 메뉴" class="menu-image">
+      </div>
+      
+      <!-- 밀키트 섹션 -->
+      <div class="meal-section">
+        <div class="meal-title">밀키트</div>
+        <div class="meal-grid">
+          <div class="meal-item">
+            <img src="menu/meal1.png" alt="밀키트 1">
+            <div class="meal-label">밀키트 1</div>
+          </div>
+          <div class="meal-item">
+            <img src="menu/meal2.png" alt="밀키트 2">
+            <div class="meal-label">밀키트 2</div>
+          </div>
+          <div class="meal-item">
+            <img src="menu/meal3.png" alt="밀키트 3">
+            <div class="meal-label">밀키트 3</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 메뉴 섹션 -->
+      <div class="meal-section">
+        <div class="meal-title">메뉴</div>
+        <div class="meal-grid">
+          <div class="meal-item">
+            <img src="menu/menu1.png" alt="메뉴 1">
+            <div class="meal-label">메뉴 1</div>
+          </div>
+          <div class="meal-item">
+            <img src="menu/menu2.png" alt="메뉴 2">
+            <div class="meal-label">메뉴 2</div>
+          </div>
+          <div class="meal-item">
+            <img src="menu/menu3.png" alt="메뉴 3">
+            <div class="meal-label">메뉴 3</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

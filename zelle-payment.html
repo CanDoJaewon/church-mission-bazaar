@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Zelle 결제 방법 - 임마누엘 가정교회 선교 바자회</title>
+    <meta name="description" content="Zelle을 이용한 결제 방법 안내" />
+    <meta name="format-detection" content="telephone=no" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        font-family: -apple-system, system-ui, Segoe UI, Roboto, Noto Sans KR, Arial, Apple SD Gothic Neo, sans-serif;
+        background: #f5f5f5;
+        color: #333;
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+      
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      
+      .header {
+        text-align: center;
+        margin-bottom: 30px;
+        padding: 20px;
+        background: #fff;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      }
+      
+      .back-btn {
+        display: inline-block;
+        padding: 12px 24px;
+        background: #007bff;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        font-weight: 600;
+        transition: background 0.3s ease;
+      }
+      
+      .back-btn:hover {
+        background: #0056b3;
+      }
+      
+      h1 {
+        font-size: 2.5rem;
+        color: #2c3e50;
+        margin-bottom: 10px;
+      }
+      
+      .swiper-container {
+        width: 100%;
+        height: 70vh;
+        position: relative;
+        overflow: hidden;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        background: #fff;
+      }
+      
+      .swiper-wrapper {
+        display: flex;
+        transition: transform 0.3s ease-in-out;
+        height: 100%;
+      }
+      
+      .swiper-slide {
+        min-width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+      
+      .slide-image {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        border-radius: 10px;
+      }
+      
+      .swiper-pagination {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 10px;
+        z-index: 10;
+      }
+      
+      .swiper-pagination-bullet {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+      
+      .swiper-pagination-bullet.active {
+        background: #007bff;
+      }
+      
+      .swiper-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.3s ease;
+        z-index: 10;
+      }
+      
+      .swiper-button:hover {
+        background: rgba(0, 0, 0, 0.7);
+      }
+      
+      .swiper-button-prev {
+        left: 20px;
+      }
+      
+      .swiper-button-next {
+        right: 20px;
+      }
+      
+      .step-indicator {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #2c3e50;
+      }
+      
+      .instructions {
+        text-align: center;
+        margin: 20px 0;
+        padding: 15px;
+        background: #e3f2fd;
+        border-radius: 10px;
+        color: #1976d2;
+        font-size: 1rem;
+      }
+      
+      @media (max-width: 768px) {
+        .container {
+          padding: 15px;
+        }
+        
+        h1 {
+          font-size: 2rem;
+        }
+        
+        .swiper-container {
+          height: 60vh;
+        }
+        
+        .swiper-button {
+          width: 40px;
+          height: 40px;
+          font-size: 16px;
+        }
+        
+        .swiper-button-prev {
+          left: 10px;
+        }
+        
+        .swiper-button-next {
+          right: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <a href="index.html" class="back-btn">← 메인으로 돌아가기</a>
+        <h1>Zelle 결제 방법</h1>
+        <p>임마누엘 가정교회 선교 바자회</p>
+      </div>
+      
+      <div class="instructions">
+        💡 <strong>사용법:</strong><br/>
+        오른쪽에서 왼쪽으로 스와이프하거나<br/>
+        화살표 버튼을 클릭하세요
+      </div>
+      
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="step/step1.png" alt="Zelle 결제 방법 1단계" class="slide-image">
+          </div>
+          <div class="swiper-slide">
+            <img src="step/step2-1.png" alt="Zelle 결제 방법 2-1단계" class="slide-image">
+          </div>
+          <div class="swiper-slide">
+            <img src="step/step2-2.png" alt="Zelle 결제 방법 2-2단계" class="slide-image">
+          </div>
+          <div class="swiper-slide">
+            <img src="step/step3.png" alt="Zelle 결제 방법 3단계" class="slide-image">
+          </div>
+          <div class="swiper-slide">
+            <img src="step/step4.png" alt="Zelle 결제 방법 4단계" class="slide-image">
+          </div>
+        </div>
+        
+        <button class="swiper-button swiper-button-prev" onclick="prevSlide()">‹</button>
+        <button class="swiper-button swiper-button-next" onclick="nextSlide()">›</button>
+        
+        <div class="swiper-pagination" id="pagination"></div>
+      </div>
+      
+      <div class="step-indicator" id="stepIndicator">
+        단계 1 / 5
+      </div>
+    </div>
+
+    <script>
+      let currentSlide = 0;
+      const totalSlides = 5;
+      const wrapper = document.querySelector('.swiper-wrapper');
+      const stepIndicator = document.getElementById('stepIndicator');
+      const pagination = document.getElementById('pagination');
+      
+      // 페이지네이션 생성
+      function createPagination() {
+        pagination.innerHTML = '';
+        for (let i = 0; i < totalSlides; i++) {
+          const bullet = document.createElement('div');
+          bullet.className = 'swiper-pagination-bullet';
+          bullet.onclick = () => goToSlide(i);
+          pagination.appendChild(bullet);
+        }
+        updatePagination();
+      }
+      
+      // 페이지네이션 업데이트
+      function updatePagination() {
+        const bullets = pagination.querySelectorAll('.swiper-pagination-bullet');
+        bullets.forEach((bullet, index) => {
+          bullet.classList.toggle('active', index === currentSlide);
+        });
+        stepIndicator.textContent = `단계 ${currentSlide + 1} / ${totalSlides}`;
+      }
+      
+      // 슬라이드 이동
+      function goToSlide(index) {
+        currentSlide = index;
+        updateSlide();
+      }
+      
+      // 이전 슬라이드
+      function prevSlide() {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        updateSlide();
+      }
+      
+      // 다음 슬라이드
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateSlide();
+      }
+      
+      // 슬라이드 업데이트
+      function updateSlide() {
+        wrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
+        updatePagination();
+      }
+      
+      // 터치 이벤트 처리
+      let startX = 0;
+      let endX = 0;
+      
+      wrapper.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+      });
+      
+      wrapper.addEventListener('touchend', (e) => {
+        endX = e.changedTouches[0].clientX;
+        handleSwipe();
+      });
+      
+      function handleSwipe() {
+        const swipeThreshold = 50;
+        const diff = startX - endX;
+        
+        if (Math.abs(diff) > swipeThreshold) {
+          if (diff > 0) {
+            // 왼쪽으로 스와이프 (다음 슬라이드)
+            nextSlide();
+          } else {
+            // 오른쪽으로 스와이프 (이전 슬라이드)
+            prevSlide();
+          }
+        }
+      }
+      
+      // 키보드 이벤트
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+          prevSlide();
+        } else if (e.key === 'ArrowRight') {
+          nextSlide();
+        }
+      });
+      
+      // 초기화
+      createPagination();
+      updateSlide();
+    </script>
+  </body>
+</html>
