@@ -66,6 +66,11 @@
         border-radius: 15px;
         box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         background: #fff;
+        touch-action: pan-y pinch-zoom; /* 터치 동작 최적화 */
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
       }
       
       .swiper-wrapper {
@@ -287,25 +292,44 @@
         updatePagination();
       }
       
-      // 터치 이벤트 처리
+      // 터치 이벤트 처리 (개선된 버전)
       let startX = 0;
+      let startY = 0;
       let endX = 0;
+      let endY = 0;
+      let isSwiping = false;
       
       wrapper.addEventListener('touchstart', (e) => {
         startX = e.touches[0].clientX;
-      });
+        startY = e.touches[0].clientY;
+        isSwiping = true;
+        e.preventDefault(); // 기본 스크롤 방지
+      }, { passive: false });
+      
+      wrapper.addEventListener('touchmove', (e) => {
+        if (!isSwiping) return;
+        e.preventDefault(); // 기본 스크롤 방지
+      }, { passive: false });
       
       wrapper.addEventListener('touchend', (e) => {
+        if (!isSwiping) return;
+        
         endX = e.changedTouches[0].clientX;
+        endY = e.changedTouches[0].clientY;
+        
         handleSwipe();
-      });
+        isSwiping = false;
+        e.preventDefault();
+      }, { passive: false });
       
       function handleSwipe() {
-        const swipeThreshold = 50;
-        const diff = startX - endX;
+        const swipeThreshold = 30; // 더 민감하게 설정
+        const diffX = startX - endX;
+        const diffY = startY - endY;
         
-        if (Math.abs(diff) > swipeThreshold) {
-          if (diff > 0) {
+        // 수평 스와이프가 수직 스와이프보다 클 때만 처리
+        if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > swipeThreshold) {
+          if (diffX > 0) {
             // 왼쪽으로 스와이프 (다음 슬라이드)
             nextSlide();
           } else {
